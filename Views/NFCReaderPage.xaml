@@ -1,0 +1,11 @@
+<!-- Views/NFCReaderPage.xaml -->
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TapPay.Views.NFCReaderPage"
+             Title="Lectura de NFC">
+    <StackLayout Padding="30">
+        <Label Text="Acerque la tarjeta NFC para leer" />
+        <Label x:Name="BalanceLabel" Text="Saldo disponible: "  />
+        <Button Text="Leer NFC" Clicked="OnReadNFCCicked" />
+    </StackLayout>
+</ContentPage>

@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TapPay.Views.DataPage"
+             Title="Datos de la Base de Datos">
+    <ScrollView>
+        <StackLayout Padding="10">
+        <!-- AQUI COMIENZA EL CODIGO PARA LOS DATOS DE ORGANIZADORES -->
+            <Label Text="Organizadores"
+                    FontAttributes="Bold"
+                    FontSize="Medium"/>
+            <CollectionView x:Name="OrganizadoresCollectionView">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Padding="0,10">
+                            <!-- label para el ID de el organizador -->
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="ID: "
+                                                FontAttributes="Bold"/>
+                                        <Span Text="{Binding OrganizadorId}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <!-- label para el nombre del organizador -->
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Nombre: "
+                                                FontAttributes="Bold"/>
+                                        <Span Text="{Binding Nombre}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <!-- label para el correo electrnico del organizador -->
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Corre Electronico: "
+                                                FontAttributes="Bold"/>
+                                        <Span Text="{Binding CorreoElectronico}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <!-- label para el telefono del organizador -->
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Telefono: "
+                                                FontAttributes="Bold"/>
+                                        <Span Text="{Binding Telefono}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <!-- label para el RNC del organizador -->
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="rnc: "
+                                                FontAttributes="Bold"/>
+                                        <Span Text="{Binding rnc}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <!-- AQUI TERMINA EL CODIGO PARA LOS DATOS DE ORGANIZADORES -->
+
+
+            <!-- AQUI COMIENZA EL CODIGO PARA LOS DATOS DE EVENTOS -->
+            <Label Text="Eventos"
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    Margin="0,20,0,0"/>
+            <CollectionView x:Name="EventosCollectionView">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Padding="0,10">
+                            <!-- label para el ID del evento -->
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="ID: "
+                                                FontAttributes="Bold"/>
+                                        <Span Text="{Binding EventoId}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <!-- label para el Nombre del Evento -->
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Nombre: "
+                                                FontAttributes="Bold"/>
+                                        <Span Text="{Binding Nombre}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <!-- label para el Correo electronico del Evento -->
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Fecha: "
+                                                FontAttributes="Bold"/>
+                                        <Span Text="{Binding Fecha}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <!-- label para la Fecha de Inicio del evento -->
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Hora Inicio: "
+                                                FontAttributes="Bold"/>
+                                        <Span Text="{Binding HoraInicio}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <!-- label para la Hora fin del Evento -->
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Hora Fin: "
+                                                FontAttributes="Bold"/>
+                                        <Span Text="{Binding HoraFin}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <!-- label para la Ubicacion del Evento -->
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Ubicacion: "
+                                                FontAttributes="Bold"/>
+                                        <Span Text="{Binding Ubicacion}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <!-- label para ver el id del Organizador del Evento -->
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Organizador: "
+                                                FontAttributes="Bold"/>
+                                        <Span Text="{Binding OrganizadorId}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <!-- AQUI TERMINA EL CODIGO PARA LOS DATOS DE EVENTOS -->
+
+
+            <!-- AQUI COMIENZA EL CODIGO PARA LOS DATOS DE USUARIO -->
+            <Label Text="Usuarios"
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    Margin="0,20,0,0"/>
+            <CollectionView x:Name="UsuariosCollectionView">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Padding="0,10">
+                            <!-- label para el Nombre del Usuario -->
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Nombre: "
+                                                FontAttributes="Bold"/>
+                                        <Span Text="{Binding Nombre}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <!-- label para el  Apellido del Usuario -->
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Apellido: "
+                                                FontAttributes="Bold"/>
+                                        <Span Text="{Binding Apellido}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <!-- label para el Correo electronico del Usuario -->
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Correo Electronico: "
+                                                FontAttributes="Bold"/>
+                                        <Span Text="{Binding CorreoElectronico}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <!-- label para el Telefono del Usuario -->
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Telefono: "
+                                                FontAttributes="Bold"/>
+                                        <Span Text="{Binding Telefono}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <!-- label para la contrasena del Usuario -->
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Contrasena: "
+                                                FontAttributes="Bold"/>
+                                        <Span Text="{Binding Contrasena}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <!-- label para la Cedula del Usuario -->
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Cedula: "
+                                                FontAttributes="Bold"/>
+                                        <Span Text="{Binding Cedula}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <!-- AQUI TERMINA EL CODIGO PARA LOS DATOS DE USUARIO -->
+
+            <!-- AQUI COMIENZA EL CODIGO PARA LOS DATOS DE PRODUCTOS -->
+            <Label Text="Productos"
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    Margin="0,20,0,0"/>
+            <CollectionView x:Name="ProductosCollectionView">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Padding="0,10">
+                            <!-- label para el Id del Producto -->
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="ID: " FontAttributes="Bold"/>
+                                        <Span Text="{Binding ProductoId}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <!-- label para el Nombre del Producto -->
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Nombre: " FontAttributes="Bold"/>
+                                        <Span Text="{Binding Nombre}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <!-- label para La Descripcion del Producto -->
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Descripcion: " FontAttributes="Bold"/>
+                                        <Span Text="{Binding Descripcion}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <!-- label para el Precio del Producto -->
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Precio: " FontAttributes="Bold"/>
+                                        <Span Text="{Binding Precio}"/>
+                                        <Span Text="$ pesos Dominicanos"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <!-- AQUI TERMINA EL CODIGO PARA LOS DATOS DE Productos -->
+            
+            <!-- AQUI COMIENZA EL CODIGO PARA LOS DATOS DE Clientes -->
+            <Label Text="Clientes"
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    Margin="0,20,0,0"/>
+            <CollectionView x:Name="ClientesCollectionView">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Padding="0,10">
+                            <!-- label para el Id del Cliente -->
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="ID: " FontAttributes="Bold"/>
+                                        <Span Text="{Binding ClienteId}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <!-- label para el Nombre del Cliente -->
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Nombre: " FontAttributes="Bold"/>
+                                        <Span Text="{Binding Nombre}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <!-- label para el Apellido del Cliente -->
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Apellido: " FontAttributes="Bold"/>
+                                        <Span Text="{Binding Apellido}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <!-- label para el correo electronico del cliente -->
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Correo Electronico: " FontAttributes="Bold"/>
+                                        <Span Text="{Binding CorreoElectronico}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <!-- Label para el Telefono del Cliente -->
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Telefono: " FontAttributes="Bold"/>
+                                        <Span Text="{Binding Telefono}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <!-- Label para la cedula del cliente -->
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Cedula: " FontAttributes="Bold"/>
+                                        <Span Text="{Binding Cedula}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <!-- AQUI TERMINA EL CODIGO PARA LOS DATOS del Cliente -->
+            <!-- Agrega más secciones para Usuarios, Tarjetas NFC, Productos, Transacciones según sea necesario -->
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>
