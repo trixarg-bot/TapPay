@@ -17,7 +17,6 @@ namespace TapPay.Services
         {
             _database = new SQLiteAsyncConnection(dbPath);
             this.sqlServerConnectionString = sqlServerConnectionString;
-            _database = new SQLiteAsyncConnection(dbPath);
             _database.CreateTableAsync<Cliente>().Wait();
             _database.CreateTableAsync<Organizador>().Wait();
             _database.CreateTableAsync<Evento>().Wait();
@@ -47,10 +46,11 @@ namespace TapPay.Services
                     await sqlConnection.OpenAsync();
 
                     // sincronización de la tabla Organizador
-                    string query = "SELECT * FROM Organizador";
-                    using (SqlCommand command = new SqlCommand(query, sqlConnection))
+                    string query = "SELECT * FROM Organizador where usuario_id = @usuario_id";
+                    using (SqlCommand commandOrganizador = new SqlCommand(query, sqlConnection))
                     {
-                        using (SqlDataReader reader = await command.ExecuteReaderAsync())
+                        commandOrganizador.Parameters.AddWithValue("@usuario_id", usuario_id);
+                        using (SqlDataReader reader = await commandOrganizador.ExecuteReaderAsync())
                         {
                             var organizadores = new List<Organizador>();
                             while (await reader.ReadAsync())
@@ -61,7 +61,9 @@ namespace TapPay.Services
                                     Nombre = reader.GetString(1),
                                     CorreoElectronico = reader.GetString(2),
                                     Telefono = reader.GetString(3),
-                                    rnc = reader.GetString(4)
+                                    rnc = reader.GetString(4),
+                                    //usuario_id = reader.GetInt32(5) 
+                                    usuario_id = usuario_id
                                 };
                                 organizadores.Add(organizador);
                             }
@@ -95,9 +97,10 @@ namespace TapPay.Services
                     }
 
                     // sincronización de la tabla Evento
-                    string queryEvento = "SELECT * FROM Evento";
+                    string queryEvento = "SELECT * FROM evento where usuario_id = @usuario_id";
                     using (SqlCommand commandEvento = new SqlCommand(queryEvento, sqlConnection))
                     {
+                        commandEvento.Parameters.AddWithValue("@usuario_id", usuario_id);
                         using (SqlDataReader reader = await commandEvento.ExecuteReaderAsync())
                         {
                             var Eventos = new List<Evento>();
@@ -112,6 +115,7 @@ namespace TapPay.Services
                                     HoraFin = reader.GetTimeSpan(4),
                                     Ubicacion = reader.GetString(5),
                                     OrganizadorId = reader.GetInt32(6),
+                                    usuario_id = usuario_id
 
                                 };
                                 Eventos.Add(Evento);
@@ -181,7 +185,7 @@ namespace TapPay.Services
             }
         }
 
-        
+    //*Metodo para registrar un nuevo usuario   
     public async Task OnRegisterClicked(string cedula, string nombre, string apellido, string correo, string telefono, string contrasena)
     {
         using (SqlConnection conn = new SqlConnection(sqlServerConnectionString))
@@ -200,7 +204,7 @@ namespace TapPay.Services
     }
 
 
-    //metodo para obtener el ID del usuario que ingreso a la app.
+    //*metodo para obtener el ID del usuario que ingreso a la app.
     public async Task<( int id, bool existe)> ObtenerIdUsuarioAsync(string correo_electronico)
     {
         using (SqlConnection conn = new SqlConnection(sqlServerConnectionString))
@@ -220,12 +224,70 @@ namespace TapPay.Services
         return (-1, false);
     }
 
+//*Metodo para obtener el Id del organizador A traves del RNC 
+    public async Task<( int id, bool existe)> ObtenerIdOrganizadorAsync(string RNC)
+    {
+        using (SqlConnection conn = new SqlConnection(sqlServerConnectionString))
+        {
+            await conn.OpenAsync();
+            SqlCommand cmd = new SqlCommand("SELECT organizador_id FROM organizador WHERE RNC = @RNC", conn);
+            cmd.Parameters.AddWithValue("@RNC", RNC);
+
+            using (SqlDataReader reader = await cmd.ExecuteReaderAsync())
+            {
+                if (reader.Read())
+                {
+                    return (reader.GetInt32(0),true); 
+                }
+            }
+        }
+        return (-1, false);
+    }
+
+//*Metodo para Registrar un nuevo Organizador en la base de datos
+    public async Task OnRegisterOrganizadorClicked(string nombre, string correo_Electronico, string telefono, string RNC, int usuario_id)
+    {
+        using (SqlConnection conn = new SqlConnection(sqlServerConnectionString))
+        {
+            await conn.OpenAsync();
+            SqlCommand cmd = new SqlCommand("INSERT INTO organizador (Nombre, Correo_Electronico, Telefono, RNC, usuario_id) VALUES (@Nombre, @Correo_Electronico, @Telefono, @RNC, @id)", conn);
+            cmd.Parameters.AddWithValue("@Nombre", nombre);
+            cmd.Parameters.AddWithValue("@Correo_Electronico", correo_Electronico);
+            cmd.Parameters.AddWithValue("@Telefono", telefono);
+            cmd.Parameters.AddWithValue("@RNC", RNC);
+            cmd.Parameters.AddWithValue("@id", usuario_id);
+  
+
+            await cmd.ExecuteNonQueryAsync();
+        }
+    }
+
+    //*Metodo para Registrar un nuevo Evento en la base de datos
+    public async Task OnRegisterEventoClicked(string nombre, string fecha, string HoraInicio, string HoraFin, string Ubicacion, int usuario_id, int organizador_id)
+    {
+        using (SqlConnection conn = new SqlConnection(sqlServerConnectionString))
+        {
+            await conn.OpenAsync();
+            SqlCommand cmd = new SqlCommand("INSERT INTO evento (Nombre, fecha, HoraInicio, HoraFin, Ubicacion, usuario_id, organizador_id) VALUES (@Nombre, @fecha, @HoraInicio, @HoraFin, @Ubicacion, @usuario_id, @organizador_id)", conn);
+            cmd.Parameters.AddWithValue("@Nombre", nombre);
+            cmd.Parameters.AddWithValue("@fecha", fecha);
+            cmd.Parameters.AddWithValue("@HoraInicio", HoraInicio);
+            cmd.Parameters.AddWithValue("@HoraFin", HoraFin);
+            cmd.Parameters.AddWithValue("@Ubicacion", Ubicacion);
+            cmd.Parameters.AddWithValue("@usuario_id", usuario_id);
+            cmd.Parameters.AddWithValue("@organizador_id", organizador_id);
+  
+
+            await cmd.ExecuteNonQueryAsync();
+        }
+    }
+
     
 
        
 
         // CRUD para Organizador
-        public Task<List<Organizador>> GetOrganizadoresAsync()
+        public Task<List<Organizador>> GetOrganizadoresAsync(int usuario_id)
         {
             return _database.Table<Organizador>().ToListAsync();
         }
@@ -254,7 +316,7 @@ namespace TapPay.Services
         }
 
         // CRUD para Evento
-        public Task<List<Evento>> GetEventosAsync()
+        public Task<List<Evento>> GetEventosAsync(int usuario_id)
         {
             return _database.Table<Evento>().ToListAsync();
         }
@@ -447,7 +509,3 @@ namespace TapPay.Services
         }
     }
 }
-
-
-
-

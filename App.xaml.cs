@@ -8,7 +8,6 @@ namespace TapPay
     public partial class App : Application
     {
         private static DatabaseService _database;
-        
         public static DatabaseService Database => _database;
         public App()
         {
@@ -23,7 +22,7 @@ namespace TapPay
          private static void InitializeDatabaseAsync()
         {
             string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "TapPay.db3");
-            string sqlServerConnectionString = "Server=192.168.68.104,1433;Database=TapPay;User Id=sa;Password=5a$Rv9&d2!Fm;TrustServerCertificate=True";
+            string sqlServerConnectionString = "Server=192.168.68.103,1433;Database=TapPay;User Id=sa;Password=5a$Rv9&d2!Fm;TrustServerCertificate=True";
             _database = new DatabaseService(dbPath, sqlServerConnectionString);
         }
         

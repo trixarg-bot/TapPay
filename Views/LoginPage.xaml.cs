@@ -8,14 +8,14 @@ namespace TapPay.Views
 {
     public partial class LoginPage : ContentPage
     {
-         private string connectionString = "Server=192.168.68.104,1433;Database=TapPay;User Id=sa;Password=5a$Rv9&d2!Fm;TrustServerCertificate=True";
+         private string connectionString = "Server=192.168.68.103,1433;Database=TapPay;User Id=sa;Password=5a$Rv9&d2!Fm;TrustServerCertificate=True";
          private DatabaseService databaseService;
 
         public LoginPage()
         {
             InitializeComponent();
            string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "TapPay.db3");
-           string sqlServerConnectionString = "Server=192.168.68.104,1433;Database=TapPay;User Id=sa;Password=5a$Rv9&d2!Fm;TrustServerCertificate=True";
+           string sqlServerConnectionString = "Server=192.168.68.103,1433;Database=TapPay;User Id=sa;Password=5a$Rv9&d2!Fm;TrustServerCertificate=True";
            databaseService = new DatabaseService(dbPath, sqlServerConnectionString);
         }
 
@@ -31,19 +31,19 @@ namespace TapPay.Views
 
                 if (existe && id != -1)
                 {
-                     await App.SyncDatabaseAsync(id);
-                    // Si el login es exitoso, navega a la página principal pasando el usuario_id
+                    await App.SyncDatabaseAsync(id);
+                    //* Si el login es exitoso, navega a la página principal pasando el usuario_id
                     await Navigation.PushAsync(new MainPage(id));
                 }
                 else
                 {
                     await DisplayAlert("Error", "No se pudo obtener el ID del usuario.", "OK");
-                    // Manejar el caso de error, por ejemplo, redirigir al inicio de sesión.
+                    //* Manejar el caso de error, por ejemplo, redirigir al inicio de sesión.
                 }
             }
             else
             {
-                // Mostrar un mensaje de error si las credenciales no son correctas
+                //* Mostrar un mensaje de error si las credenciales no son correctas
                 await DisplayAlert("Error", "Correo electrónico o contraseña incorrectos.", "OK");
             }
         }
@@ -73,14 +73,14 @@ namespace TapPay.Views
             }
             catch (Exception ex)
             {
-                // Manejo de excepciones
+                //* Manejo de excepciones
                 await DisplayAlert("Error", $"Ocurrió un error al intentar iniciar sesión: {ex.Message}", "OK");
                 return false;
             }
 
         }
 
-//metodo del boton de cambio de vista de la contra
+//*metodo del boton de cambio de vista de la contra
          private void OnTogglePasswordButtonClicked(object sender, EventArgs e)
         {
             PasswordEntry.IsPassword = !PasswordEntry.IsPassword;
@@ -88,16 +88,45 @@ namespace TapPay.Views
         }
 
 
-// boton para viajar a la pagina de registro de nuevo usuario.
+//* Boton para viajar a la pagina de registro de nuevo usuario.
          private async void OnRegisterClicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new SignUp());
         }
+
+//*Boton para viaje a la pagina de Registros
+         private async void OnPageRegisterClicked(object sender, EventArgs e)
+        {
+            string correo_electronico = EmailEntry.Text;
+            string password = PasswordEntry.Text;
+
+            if (await ValidateLoginAsync(correo_electronico, password))
+            {
+                 // Obtener el usuario_id
+                var (id, existe) = await databaseService.ObtenerIdUsuarioAsync(correo_electronico);
+
+                if (existe && id != -1)
+                {
+                    //  await App.SyncDatabaseAsync(id);
+                    //* Si el login es exitoso, navega a la página principal pasando el usuario_id
+                    await Navigation.PushAsync(new RegisterPage(id));
+                }
+                else
+                {
+                    await DisplayAlert("Error", "No se pudo obtener el ID del usuario.", "OK");
+                    //* Manejar el caso de error, por ejemplo, redirigir al inicio de sesión.
+                }
+            }
+            else
+            {
+                //* Mostrar un mensaje de error si las credenciales no son correctas
+                await DisplayAlert("Error", "Correo electrónico o contraseña incorrectos.", "OK");
+            }
+            
+        }
+
     }
 
    
 
 }
-
-
-

@@ -13,5 +13,7 @@ namespace TapPay.Models
         public TimeSpan HoraFin { get; set; }
         public string Ubicacion { get; set; } = string.Empty;
         public int OrganizadorId { get; set; }
+
+        public int usuario_id { get; set; }
     }
 }

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TapPay.Views.ADD_Organizador"
+             Title="Registros">
+    <StackLayout Padding="30" Spacing="30">
+        <Label Text="Registrar Nuevo Organizador"/>
+
+        <Entry Placeholder="Ingrese el Nombre de la Empresa Organizadora" x:Name="NombreEntry" />
+        <Entry Placeholder="Ingrese el Correo Electronico de la Empresa Organizadora" x:Name="EmailEntry" />
+        <Entry Placeholder="Ingrese el Telefono de la Empresa Organizadora" x:Name="TelefonoEntry" />
+        <Entry Placeholder="Ingrese el RNC de la Empresa organizador" x:Name="RncEntry" />
+        
+        <Button Text="Registrar Organizador" Clicked="OnOrganizadorRegisterClicked" />
+
+    </StackLayout>
+</ContentPage>

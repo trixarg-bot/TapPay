@@ -10,5 +10,7 @@ namespace TapPay.Models
         public string CorreoElectronico { get; set; } = string.Empty;
         public string Telefono { get; set; } = string.Empty;
         public string rnc  { get; set; } = string.Empty;
+
+        public int usuario_id {get; set;}
     }
 }

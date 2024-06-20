@@ -36,6 +36,24 @@ build_metadata.AdditionalFiles.ManifestResourceName = TapPay.Resources.Styles.St
 build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Styles.xaml
 build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Styles.xaml
 
+[C:/Users/liria/OneDrive/Escritorio/Eduardo/maui_APP/TapPay/Views/ALL_Register_Pages/ADD_Evento.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = TapPay.Views.ALL_Register_Pages.ADD_Evento.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\ALL_Register_Pages\ADD_Evento.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\ALL_Register_Pages\ADD_Evento.xaml
+
+[C:/Users/liria/OneDrive/Escritorio/Eduardo/maui_APP/TapPay/Views/ALL_Register_Pages/ADD_Organizador.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = TapPay.Views.ALL_Register_Pages.ADD_Organizador.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\ALL_Register_Pages\ADD_Organizador.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\ALL_Register_Pages\ADD_Organizador.xaml
+
+[C:/Users/liria/OneDrive/Escritorio/Eduardo/maui_APP/TapPay/Views/ALL_Register_Pages/RegisterPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = TapPay.Views.ALL_Register_Pages.RegisterPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\ALL_Register_Pages\RegisterPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\ALL_Register_Pages\RegisterPage.xaml
+
 [C:/Users/liria/OneDrive/Escritorio/Eduardo/maui_APP/TapPay/Views/DataPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = TapPay.Views.DataPage.xaml

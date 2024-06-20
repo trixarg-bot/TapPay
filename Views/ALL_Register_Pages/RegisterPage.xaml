@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TapPay.Views.RegisterPage"
+             Title="Registros">
+    <StackLayout Padding="30" Spacing="30">
+        <Label Text="Que Desea Registrar"/>
+        
+        
+        
+        <Button Text="Registrar un Nuevo organizador" Clicked="OnNewOrganizadorClicked" />
+        <Button Text="Registrar un Nuevo Evento" Clicked="OnNewEventoClicked" />
+    </StackLayout>
+</ContentPage>

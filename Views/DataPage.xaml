@@ -9,9 +9,10 @@
             <Label Text="Organizadores"
                     FontAttributes="Bold"
                     FontSize="Medium"/>
-            <CollectionView x:Name="OrganizadoresCollectionView">
+            <CollectionView x:Name="OrganizadoresCollectionView"  SelectionMode="Single" >
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
+                    <Frame BorderColor="Gray" CornerRadius="5" Padding="10" Margin="5">
                         <StackLayout Padding="0,10">
                             <!-- label para el ID de el organizador -->
                             <Label>
@@ -64,6 +65,7 @@
                                 </Label.FormattedText>
                             </Label>
                         </StackLayout>
+                    </Frame>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
