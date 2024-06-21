@@ -4,7 +4,7 @@
              x:Class="TapPay.Views.LoginPage"
              Title="Login">
     <StackLayout Padding="30" Spacing="30">
-        <Entry Text="carlos.gomez@gmail.com" Placeholder="Correo Electrónico" x:Name="EmailEntry" />
+        <Entry Text="carlos.gomez@example.com" Placeholder="Correo Electrónico" x:Name="EmailEntry" />
         
         <Grid ColumnSpacing="10">
             <Grid.ColumnDefinitions>

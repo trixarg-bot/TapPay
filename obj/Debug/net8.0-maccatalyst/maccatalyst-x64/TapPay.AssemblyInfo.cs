@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TapPay")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+38c69e250ac1e66a99c9a5737f158a40cde73bed")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+eabf7359633bbcbd74e75fc9e99faec83496343d")]
 [assembly: System.Reflection.AssemblyProductAttribute("TapPay")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TapPay")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

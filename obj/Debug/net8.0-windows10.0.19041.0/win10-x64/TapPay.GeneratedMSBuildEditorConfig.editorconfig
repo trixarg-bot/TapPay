@@ -60,6 +60,18 @@ build_metadata.AdditionalFiles.ManifestResourceName = TapPay.Views.DataPage.xaml
 build_metadata.AdditionalFiles.TargetPath = Views\DataPage.xaml
 build_metadata.AdditionalFiles.RelativePath = Views\DataPage.xaml
 
+[C:/Users/liria/OneDrive/Escritorio/Eduardo/maui_APP/TapPay/Views/DATA_VIEWS/EventoView.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = TapPay.Views.DATA_VIEWS.EventoView.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\DATA_VIEWS\EventoView.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\DATA_VIEWS\EventoView.xaml
+
+[C:/Users/liria/OneDrive/Escritorio/Eduardo/maui_APP/TapPay/Views/DATA_VIEWS/OrganizadorView.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = TapPay.Views.DATA_VIEWS.OrganizadorView.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\DATA_VIEWS\OrganizadorView.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\DATA_VIEWS\OrganizadorView.xaml
+
 [C:/Users/liria/OneDrive/Escritorio/Eduardo/maui_APP/TapPay/Views/LoginPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = TapPay.Views.LoginPage.xaml

@@ -11,7 +11,9 @@
                     Title="Selecciona un organizador"
                     TitleColor="White"
                     SelectedIndexChanged="OnOrganizadorSelected"
-                    ItemDisplayBinding="{Binding Nombre}"/>
+                    ItemDisplayBinding="{Binding Nombre}"
+                    VerticalTextAlignment="Center"
+                    HorizontalOptions="Center"/>
 
             <Entry Placeholder="Ingrese el Nombre del Evento"
                     x:Name="NombreEntry"/>

@@ -1,5 +1,6 @@
 using System;
-using System.Data.SqlClient;
+// using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 using System.Threading.Tasks;
 using Microsoft.Maui.Controls;
 using TapPay.Services;
@@ -33,7 +34,7 @@ namespace TapPay.Views
                 {
                     await App.SyncDatabaseAsync(id);
                     //* Si el login es exitoso, navega a la página principal pasando el usuario_id
-                    await Navigation.PushAsync(new MainPage(id));
+                    await Navigation.PushAsync(new DataPage(id));
                 }
                 else
                 {
