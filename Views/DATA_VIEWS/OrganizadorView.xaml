@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TapPay.Views.OrganizadorView"
+             Title="Organizadores">
+    <ScrollView>
+        <StackLayout Padding="10">
+        <Grid>
+        <Button Text="Eliminar" MaximumWidthRequest="100" HorizontalOptions="Start"/>
+        <Button Text="Editar" MaximumWidthRequest="100" HorizontalOptions="Center"/>
+        <Button Text="Agregar" MaximumWidthRequest="100" HorizontalOptions="End" Clicked="OnAgregarOrganizadorClicked"/>
+        </Grid>
+        
+
+           <CollectionView x:Name="OrganizadoresCollectionView">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Padding="0,10">
+                            <!-- label para el ID de el organizador -->
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="ID: "
+                                                FontAttributes="Bold"/>
+                                        <Span Text="{Binding OrganizadorId}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <!-- label para el nombre del organizador -->
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Nombre: "
+                                                FontAttributes="Bold"/>
+                                        <Span Text="{Binding Nombre}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <!-- label para el correo electrnico del organizador -->
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Corre Electronico: "
+                                                FontAttributes="Bold"/>
+                                        <Span Text="{Binding CorreoElectronico}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <!-- label para el telefono del organizador -->
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Telefono: "
+                                                FontAttributes="Bold"/>
+                                        <Span Text="{Binding Telefono}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <!-- label para el RNC del organizador -->
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="rnc: "
+                                                FontAttributes="Bold"/>
+                                        <Span Text="{Binding rnc}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <!-- AQUI TERMINA EL CODIGO PARA LOS DATOS DE ORGANIZADORES -->
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

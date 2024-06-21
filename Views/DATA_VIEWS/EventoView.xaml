@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TapPay.Views.EventoView"
+             Title="Organizadores">
+    <ScrollView>
+        <StackLayout Padding="10">
+        <Grid>
+        <Button Text="Eliminar" MaximumWidthRequest="100" HorizontalOptions="Start"/>
+        <Button Text="Editar" MaximumWidthRequest="100" HorizontalOptions="Center"/>
+        <Button Text="Agregar" MaximumWidthRequest="100" HorizontalOptions="End" Clicked="OnAgregarEventoClicked"/>
+        </Grid>
+         <!-- AQUI COMIENZA EL CODIGO PARA LOS DATOS DE EVENTOS -->
+            <Label Text="Eventos"
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    Margin="0,20,0,0"/>
+            <CollectionView x:Name="EventosCollectionView">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Padding="0,10">
+                            <!-- label para el ID del evento -->
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="ID: "
+                                                FontAttributes="Bold"/>
+                                        <Span Text="{Binding EventoId}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <!-- label para el Nombre del Evento -->
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Nombre: "
+                                                FontAttributes="Bold"/>
+                                        <Span Text="{Binding Nombre}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <!-- label para el Correo electronico del Evento -->
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Fecha: "
+                                                FontAttributes="Bold"/>
+                                        <Span Text="{Binding Fecha}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <!-- label para la Fecha de Inicio del evento -->
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Hora Inicio: "
+                                                FontAttributes="Bold"/>
+                                        <Span Text="{Binding HoraInicio}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <!-- label para la Hora fin del Evento -->
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Hora Fin: "
+                                                FontAttributes="Bold"/>
+                                        <Span Text="{Binding HoraFin}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <!-- label para la Ubicacion del Evento -->
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Ubicacion: "
+                                                FontAttributes="Bold"/>
+                                        <Span Text="{Binding Ubicacion}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <!-- label para ver el id del Organizador del Evento -->
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Organizador: "
+                                                FontAttributes="Bold"/>
+                                        <Span Text="{Binding OrganizadorId}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <!-- AQUI TERMINA EL CODIGO PARA LOS DATOS DE EVENTOS -->        
+
+           
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
