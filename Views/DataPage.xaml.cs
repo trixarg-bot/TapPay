@@ -40,15 +40,5 @@ namespace TapPay.Views
 
             // Agrega más llamadas a métodos de carga de datos y vinculación para Usuarios, Tarjetas NFC, Productos, Transacciones según sea necesario
         }
-
-        // private void OnOrganizadorSelected(object sender, SelectionChangedEventArgs e)
-        // {
-        //     if (e.CurrentSelection != null && e.CurrentSelection.Count > 0)
-        //     {
-        //         var selectedOrganizador = e.CurrentSelection[0] as Organizador;
-        //         // Manejar la selección del organizador aquí
-        //         DisplayAlert("Organizador Seleccionado", $"Has seleccionado a {selectedOrganizador.Nombre}", "OK");
-        //     }
-        // }
     }
 }

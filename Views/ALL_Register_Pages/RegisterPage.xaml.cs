@@ -22,17 +22,12 @@ namespace TapPay.Views
         }
 
 
-        //TODO IMPLEMENTAR LA FUNCIONALIDAD DE ENTRADA A LAS PAGINA DE REGISTRO DE ORGANIZADOR Y EVENTO. 
-        //TODO ESTO EN LA RESPECTIVA PAGINA DE CADA UNO DE LOS REGISTROS: CONSIGUIR EL ID DEL ORGANIZADOR A TRAVES DE SU RNC EN EL REGISTRO DE EVENTOS. IMPLEMENTAR EL GUARDADO DE LOS REGISTRO A LA BASE DE DATOS.
-
-
-
-
+//*metodo del boton para entrar a la pagina de registro de organizador.
         private async void OnNewOrganizadorClicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new ADD_Organizador(usuario_id));
         }
-
+//*metodo del boton para entrar a la pagina de registro de evento.
         private async void OnNewEventoClicked(object sender, EventArgs e)
         {
            await Navigation.PushAsync(new ADD_Evento(usuario_id));

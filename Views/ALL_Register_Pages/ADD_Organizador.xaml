@@ -5,7 +5,6 @@
              Title="Registros">
     <StackLayout Padding="30" Spacing="30">
         <Label Text="Registrar Nuevo Organizador"/>
-
         <Entry Placeholder="Ingrese el Nombre de la Empresa Organizadora" x:Name="NombreEntry" />
         <Entry Placeholder="Ingrese el Correo Electronico de la Empresa Organizadora" x:Name="EmailEntry" />
         <Entry Placeholder="Ingrese el Telefono de la Empresa Organizadora" x:Name="TelefonoEntry" />

@@ -3,25 +3,33 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TapPay.Views.ADD_Evento"
              Title="Registrar un Nuevo Eventos">
-   <ScrollView>          
-        <StackLayout Padding="30" Spacing="30">
-            <Label Text="Primero Ingrese el RNC de la Empresa Organizador del Evento antes de registrar el Evento"/>
-            
-            <Entry Placeholder="Ingrese el RNC de la Empresa organizadora" x:Name="RncEntry" />
-            
-            <Button Text="Confirmar Empresa Organizadora" Clicked="OnVerificarEmpresaClicked"/>
-            
-            <Entry Placeholder="Ingrese el Nombre del Evento" x:Name="NombreEntry" />
-            
-            <Entry Placeholder="Ingrese la Fecha del Evento" x:Name="FechaEntry" />
-            
-            <Entry Placeholder="Ingrese La Hora de Inicio del Evento" x:Name="HoraInicioEntry" />
-            
-            <Entry Placeholder="Ingrese La Hora de Fin del Evento" x:Name="HoraFinEntry" />
-            
-            <Entry Placeholder="Ingrese La Ubicacion del Evento" x:Name="UbicacionEntry" />
-            
-            <Button Text="Registrar Evento" Clicked="OnEventoRegisterClicked" />
+    <ScrollView>
+        <StackLayout Padding="30"
+                Spacing="30">
+
+            <Picker x:Name="OrganizadorPicker"
+                    Title="Selecciona un organizador"
+                    TitleColor="White"
+                    SelectedIndexChanged="OnOrganizadorSelected"
+                    ItemDisplayBinding="{Binding Nombre}"/>
+
+            <Entry Placeholder="Ingrese el Nombre del Evento"
+                    x:Name="NombreEntry"/>
+
+            <Entry Placeholder="Ingrese la Fecha del Evento"
+                    x:Name="FechaEntry"/>
+
+            <Entry Placeholder="Ingrese La Hora de Inicio del Evento"
+                    x:Name="HoraInicioEntry"/>
+
+            <Entry Placeholder="Ingrese La Hora de Fin del Evento"
+                    x:Name="HoraFinEntry"/>
+
+            <Entry Placeholder="Ingrese La Ubicacion del Evento"
+                    x:Name="UbicacionEntry"/>
+
+            <Button Text="Registrar Evento"
+                    Clicked="OnEventoRegisterClicked"/>
 
         </StackLayout>
     </ScrollView>

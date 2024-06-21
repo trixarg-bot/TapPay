@@ -22,6 +22,9 @@ namespace TapPay.Views
            this.usuario_id = usuario_id;
         }
 
+
+      
+
         private async void OnOrganizadorRegisterClicked(object sender, EventArgs e)
         {
             var nombre = NombreEntry.Text;
@@ -34,7 +37,6 @@ namespace TapPay.Views
             await databaseService.OnRegisterOrganizadorClicked(nombre, correo_electronico, telefono, Rnc, id);
             await DisplayAlert("Éxito", "Registro Completado.", "OK");
         }
-
     }
 
    
