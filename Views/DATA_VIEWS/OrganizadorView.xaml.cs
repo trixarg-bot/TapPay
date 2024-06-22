@@ -20,15 +20,15 @@ namespace TapPay.Views
             this.usuario_id = usuario_id;
             
         }
-
-
-         private async void OnAgregarOrganizadorClicked(object sender, EventArgs e)
+        //*METODO PARA RECARGAR LOS DATOS DE LA PAGIANA CADA QUE SE INGRESA A LA MISMA.
+        protected override async void OnAppearing()
         {
-        
-             await Navigation.PushAsync(new ADD_Organizador(usuario_id));
+            base.OnAppearing();
+            await App.SyncDatabaseAsync(usuario_id);
+            LoadData();
         }
-
-        private async void LoadData()
+        //*Metodo QUE MUESTRA LOS DATOS DE LA BASE DE DATOS EN PANTALLA.
+        public async void LoadData()
         {
             // Cargar los datos de la base de datos
             List<Organizador> organizadores = await App.Database.GetOrganizadoresAsync(usuario_id);
@@ -38,5 +38,13 @@ namespace TapPay.Views
             OrganizadoresCollectionView.ItemsSource = organizadores;
             // Agrega más llamadas a métodos de carga de datos y vinculación para Usuarios, Tarjetas NFC, Productos, Transacciones según sea necesario
         }
+         //*BOTON PARA VIAJAR HACIA LA PAGINA PARA AGREGAR UN EVENTO
+         private async void OnAgregarOrganizadorClicked(object sender, EventArgs e)
+        {
+        
+             await Navigation.PushAsync(new ADD_Organizador(usuario_id));
+        }
+
+       
     }
 }

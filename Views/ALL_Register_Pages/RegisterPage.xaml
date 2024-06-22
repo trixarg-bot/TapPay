@@ -7,8 +7,8 @@
         <Label Text="Que Desea Registrar"/>
         
         
-        
+<!--         
         <Button Text="Registrar un Nuevo organizador" Clicked="OnNewOrganizadorClicked" />
-        <Button Text="Registrar un Nuevo Evento" Clicked="OnNewEventoClicked" />
+        <Button Text="Registrar un Nuevo Evento" Clicked="OnNewEventoClicked" /> -->
     </StackLayout>
 </ContentPage>

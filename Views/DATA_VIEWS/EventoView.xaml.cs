@@ -20,14 +20,15 @@ namespace TapPay.Views
             this.usuario_id = usuario_id;
             
         }
-
-
-         private async void OnAgregarEventoClicked(object sender, EventArgs e)
+        //*METODO PARA RECARGAR LOS DATOS DE LA PAGIANA CADA QUE SE INGRESA A LA MISMA.
+        protected override async void OnAppearing()
         {
-        
-             await Navigation.PushAsync(new ADD_Evento(usuario_id));
+            base.OnAppearing();
+            await App.SyncDatabaseAsync(usuario_id);
+            LoadData();
         }
-
+        
+        //*Metodo QUE MUESTRA LOS DATOS DE LA BASE DE DATOS EN PANTALLA.
         private async void LoadData()
         {
             // Cargar los datos de la base de datos
@@ -37,6 +38,11 @@ namespace TapPay.Views
             // Vincular los datos a los CollectionView
             EventosCollectionView.ItemsSource = eventos;
             // Agrega más llamadas a métodos de carga de datos y vinculación para Usuarios, Tarjetas NFC, Productos, Transacciones según sea necesario
+        }
+        //*BOTON PARA VIAJAR HACIA LA PAGINA PARA AGREGAR UN EVENTO
+         private async void OnAgregarEventoClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ADD_Evento(usuario_id));
         }
     }
 }
