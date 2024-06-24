@@ -22,7 +22,7 @@ namespace TapPay
          private static void InitializeDatabaseAsync()
         {
             string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "TapPay.db3");
-            string sqlServerConnectionString = "Server=10.0.0.159,1433;Database=TapPay;User Id=sa;Password=5a$Rv9&d2!Fm;TrustServerCertificate=True";
+            string sqlServerConnectionString = "Server=192.168.68.114,1433;Database=TapPay;User Id=sa;Password=5a$Rv9&d2!Fm;TrustServerCertificate=True";
             _database = new DatabaseService(dbPath, sqlServerConnectionString);
         }
         

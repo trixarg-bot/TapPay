@@ -3,35 +3,39 @@ using System.Collections.Generic;
 using TapPay.Models;
 using TapPay.Services;
 
+
 namespace TapPay.Views
 {
     public partial class DataPage : ContentPage
     {
         private DatabaseService _databaseService;
         private int usuario_id;
+
+
         public DataPage(int usuario_id)
         {
             InitializeComponent();
             string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "TapPay.db3");
-            string sqlServerConnectionString = "Server=192.168.68.103,1433;Database=TapPay;User Id=sa;Password=5a$Rv9&d2!Fm;TrustServerCertificate=True";
+            string sqlServerConnectionString = "Server=192.168.68.114,1433;Database=TapPay;User Id=sa;Password=5a$Rv9&d2!Fm;TrustServerCertificate=True";
             // LoadData();
             _databaseService = new DatabaseService(dbPath, sqlServerConnectionString);
 
             this.usuario_id = usuario_id;
-            
+
         }
 
 
-         private async void OnOrganizadorClicked(object sender, EventArgs e)
+        private async void OnOrganizadorClicked(object sender, EventArgs e)
         {
-        
+
             await Navigation.PushAsync(new OrganizadorView(usuario_id));
         }
         private async void OnEventoClicked(object sender, EventArgs e)
         {
             LoadingIndicator.IsRunning = true;
             LoadingIndicator.IsVisible = true;
-            await NavigateWithLoadingIndicatorAsync(new EventoView(usuario_id));
+            EventoView eventoView = new EventoView(usuario_id);
+            await NavigationHelper.NavigateWithLoadingIndicatorAsync(this, eventoView, LoadingIndicator);
         }
 
         // private async void LoadData()
@@ -51,21 +55,7 @@ namespace TapPay.Views
         //     ClientesCollectionView.ItemsSource = clientes;
 
 
-        //     // Agrega más llamadas a métodos de carga de datos y vinculación para Usuarios, Tarjetas NFC, Productos, Transacciones según sea necesario
+
         // }
-
-         private async Task NavigateWithLoadingIndicatorAsync(Page page)
-        {
-            
-
-            // Simular carga de datos
-            await Task.Delay(200); // Reemplaza esto con tu lógica de carga de datos
-
-      
-
-            await Navigation.PushAsync(page);
-            LoadingIndicator.IsRunning = false;
-            LoadingIndicator.IsVisible = false;
-        }
     }
 }

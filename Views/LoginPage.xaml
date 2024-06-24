@@ -24,13 +24,13 @@
                          Grid.Column="1"
                          BackgroundColor="Transparent"
                          Padding="0"
-                         WidthRequest="1"
-                         HeightRequest="1"
+                         WidthRequest="35"
+                         HeightRequest="35"
                          Aspect="AspectFit" />
         </Grid>
         
         <Button Text="Iniciar Sesión" Clicked="OnLoginClicked" />
         <Button Text="Registrarse" Clicked="OnRegisterClicked" />
-        <!-- <Button Text="Pagina de Registro" Clicked="OnPageRegisterClicked" /> -->
+        <ActivityIndicator x:Name="LoadingIndicator" IsRunning="False" IsVisible="False" />
     </StackLayout>
 </ContentPage>

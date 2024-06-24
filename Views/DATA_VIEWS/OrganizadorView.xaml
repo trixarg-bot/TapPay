@@ -15,58 +15,13 @@
            <CollectionView x:Name="OrganizadoresCollectionView">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <StackLayout Padding="0,10">
-                            <!-- label para el ID de el organizador -->
-                            <Label>
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="ID: "
-                                                FontAttributes="Bold"/>
-                                        <Span Text="{Binding OrganizadorId}"/>
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                            <!-- label para el nombre del organizador -->
-                            <Label>
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="Nombre: "
-                                                FontAttributes="Bold"/>
-                                        <Span Text="{Binding Nombre}"/>
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                            <!-- label para el correo electrnico del organizador -->
-                            <Label>
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="Corre Electronico: "
-                                                FontAttributes="Bold"/>
-                                        <Span Text="{Binding CorreoElectronico}"/>
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                            <!-- label para el telefono del organizador -->
-                            <Label>
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="Telefono: "
-                                                FontAttributes="Bold"/>
-                                        <Span Text="{Binding Telefono}"/>
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                            <!-- label para el RNC del organizador -->
-                            <Label>
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="rnc: "
-                                                FontAttributes="Bold"/>
-                                        <Span Text="{Binding rnc}"/>
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                        </StackLayout>
+                        <Frame BorderColor="LightGray" CornerRadius="5" Padding="5" Margin="13" BackgroundColor="Black">
+                            <StackLayout>
+                                <Label Text="{Binding Nombre}" FontAttributes="Bold" FontSize="18"/>
+                                <Label Text="{Binding CorreoElectronico}" FontSize="14"/>
+                                <Label Text="{Binding Telefono}" FontSize="14"/>
+                            </StackLayout>
+                        </Frame>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
