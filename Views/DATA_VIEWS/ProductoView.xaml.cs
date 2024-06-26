@@ -5,11 +5,12 @@ using TapPay.Services;
 
 namespace TapPay.Views
 {
-    public partial class EventoView : ContentPage
+    public partial class ProductoView : ContentPage
     {
         private DatabaseService _databaseService;
         private int usuario_id;
-        public EventoView(int usuario_id)
+        
+        public ProductoView(int usuario_id)
         {
             InitializeComponent();
             string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "TapPay.db3");
@@ -18,7 +19,6 @@ namespace TapPay.Views
             _databaseService = new DatabaseService(dbPath, sqlServerConnectionString);
 
             this.usuario_id = usuario_id;
-            
         }
         //*METODO PARA RECARGAR LOS DATOS DE LA PAGIANA CADA QUE SE INGRESA A LA MISMA.
         protected override async void OnAppearing()
@@ -27,23 +27,28 @@ namespace TapPay.Views
             await App.SyncDatabaseAsync(usuario_id);
             LoadData();
         }
-        
+
         //*Metodo QUE MUESTRA LOS DATOS DE LA BASE DE DATOS EN PANTALLA.
         private async void LoadData()
         {
             // Cargar los datos de la base de datos
-            List<Evento> eventos = await App.Database.GetEventosAsync(usuario_id);
+            List<Producto> productos = await App.Database.GetProductosAsync(usuario_id);
 
 
             // Vincular los datos a los CollectionView
-            EventosCollectionView.ItemsSource = eventos;
+            ProductosCollectionView.ItemsSource = productos;
             // Agrega más llamadas a métodos de carga de datos y vinculación para Usuarios, Tarjetas NFC, Productos, Transacciones según sea necesario
         }
         //*BOTON PARA VIAJAR HACIA LA PAGINA PARA AGREGAR UN EVENTO
-         private async void OnAgregarEventoClicked(object sender, EventArgs e)
+        private async void OnAgregarProductoClicked(object sender, EventArgs e)
         {
-            ADD_Evento add_Evento = new ADD_Evento(usuario_id);
-            await NavigationHelper.NavigateWithLoadingIndicatorAsync(this, add_Evento, LoadingIndicator); 
+            ADD_producto add_producto = new ADD_producto(usuario_id);
+            LoadingIndicator.IsRunning = true;
+            LoadingIndicator.IsVisible = true;
+            await NavigationHelper.NavigateWithLoadingIndicatorAsync(this, add_producto, LoadingIndicator);
         }
+
+
+       
     }
 }

@@ -126,9 +126,10 @@ namespace TapPay.Services
                     }
 
                     //sincronización de la tabla Producto
-                    string queryProducto = "SELECT * FROM Producto";
+                    string queryProducto = "SELECT * FROM Producto where usuario_id = @usuario_id";
                     using (SqlCommand commandProducto = new SqlCommand(queryProducto, sqlConnection))
                     {
+                        commandProducto.Parameters.AddWithValue("@usuario_id", usuario_id);
                         using (SqlDataReader reader = await commandProducto.ExecuteReaderAsync())
                         {
                             var Productos = new List<Producto>();
@@ -140,6 +141,7 @@ namespace TapPay.Services
                                     Nombre = reader.GetString(1),
                                     Descripcion = reader.GetString(2),
                                     Precio = reader.GetDecimal(3),
+                                    usuario_id = usuario_id
 
                                 };
                                 Productos.Add(Producto);
@@ -151,7 +153,7 @@ namespace TapPay.Services
                     string queryCliente = "SELECT * FROM Cliente where usuario_id = @usuario_id";
                     using (SqlCommand commandCliente = new SqlCommand(queryCliente, sqlConnection))
                     {
-                         commandCliente.Parameters.AddWithValue("@usuario_id", usuario_id);
+                        commandCliente.Parameters.AddWithValue("@usuario_id", usuario_id);
                         using (SqlDataReader reader = await commandCliente.ExecuteReaderAsync())
                         {
                             var clientes = new List<Cliente>();
@@ -186,106 +188,147 @@ namespace TapPay.Services
             }
         }
 
-    //*Metodo para registrar un nuevo usuario   
-    public async Task OnRegisterClicked(string cedula, string nombre, string apellido, string correo, string telefono, string contrasena)
-    {
-        using (SqlConnection conn = new SqlConnection(sqlServerConnectionString))
+        //*Metodo para registrar un nuevo usuario   
+        public async Task OnRegisterClicked(string cedula, string nombre, string apellido, string correo, string telefono, string contrasena)
         {
-            await conn.OpenAsync();
-            SqlCommand cmd = new SqlCommand("INSERT INTO Usuario (Cedula, Nombre, Apellido, Correo_Electronico, Telefono, contrasena) VALUES (@Cedula, @Nombre, @Apellido, @Correo, @Telefono, @contrasena)", conn);
-            cmd.Parameters.AddWithValue("@Nombre", nombre);
-            cmd.Parameters.AddWithValue("@Apellido", apellido);
-            cmd.Parameters.AddWithValue("@Cedula", cedula);
-            cmd.Parameters.AddWithValue("@Correo", correo);
-            cmd.Parameters.AddWithValue("@Telefono", telefono);
-            cmd.Parameters.AddWithValue("@Contrasena", contrasena);
-
-            await cmd.ExecuteNonQueryAsync();
-        }
-    }
-
-
-    //*metodo para obtener el ID del usuario que ingreso a la app.
-    public async Task<( int id, bool existe)> ObtenerIdUsuarioAsync(string correo_electronico)
-    {
-        using (SqlConnection conn = new SqlConnection(sqlServerConnectionString))
-        {
-            await conn.OpenAsync();
-            SqlCommand cmd = new SqlCommand("SELECT usuario_id FROM usuario WHERE correo_electronico = @Correo_electronico", conn);
-            cmd.Parameters.AddWithValue("@Correo_electronico", correo_electronico);
-
-            using (SqlDataReader reader = await cmd.ExecuteReaderAsync())
+            using (SqlConnection conn = new SqlConnection(sqlServerConnectionString))
             {
-                if (reader.Read())
-                {
-                    return (reader.GetInt32(0),true); 
-                }
+                await conn.OpenAsync();
+                SqlCommand cmd = new SqlCommand("INSERT INTO Usuario (Cedula, Nombre, Apellido, Correo_Electronico, Telefono, contrasena) VALUES (@Cedula, @Nombre, @Apellido, @Correo, @Telefono, @contrasena)", conn);
+                cmd.Parameters.AddWithValue("@Nombre", nombre);
+                cmd.Parameters.AddWithValue("@Apellido", apellido);
+                cmd.Parameters.AddWithValue("@Cedula", cedula);
+                cmd.Parameters.AddWithValue("@Correo", correo);
+                cmd.Parameters.AddWithValue("@Telefono", telefono);
+                cmd.Parameters.AddWithValue("@Contrasena", contrasena);
+
+                await cmd.ExecuteNonQueryAsync();
             }
         }
-        return (-1, false);
-    }
 
-//*Metodo para obtener el Id del organizador A traves del RNC 
-    public async Task<( int id, bool existe)> ObtenerIdOrganizadorAsync(string RNC)
-    {
-        using (SqlConnection conn = new SqlConnection(sqlServerConnectionString))
+
+        //*metodo para obtener el ID del usuario que ingreso a la app.
+        public async Task<(int id, bool existe)> ObtenerIdUsuarioAsync(string correo_electronico)
         {
-            await conn.OpenAsync();
-            SqlCommand cmd = new SqlCommand("SELECT organizador_id FROM organizador WHERE RNC = @RNC", conn);
-            cmd.Parameters.AddWithValue("@RNC", RNC);
-
-            using (SqlDataReader reader = await cmd.ExecuteReaderAsync())
+            using (SqlConnection conn = new SqlConnection(sqlServerConnectionString))
             {
-                if (reader.Read())
+                await conn.OpenAsync();
+                SqlCommand cmd = new SqlCommand("SELECT usuario_id FROM usuario WHERE correo_electronico = @Correo_electronico", conn);
+                cmd.Parameters.AddWithValue("@Correo_electronico", correo_electronico);
+
+                using (SqlDataReader reader = await cmd.ExecuteReaderAsync())
                 {
-                    return (reader.GetInt32(0),true); 
+                    if (reader.Read())
+                    {
+                        return (reader.GetInt32(0), true);
+                    }
                 }
             }
+            return (-1, false);
         }
-        return (-1, false);
-    }
 
-//*Metodo para Registrar un nuevo Organizador en la base de datos
-    public async Task OnRegisterOrganizadorClicked(string nombre, string correo_Electronico, string telefono, string RNC, int usuario_id)
-    {
-        using (SqlConnection conn = new SqlConnection(sqlServerConnectionString))
+        //*Metodo para obtener el Id del organizador A traves del RNC 
+        public async Task<(int id, bool existe)> ObtenerIdOrganizadorAsync(string RNC)
         {
-            await conn.OpenAsync();
-            SqlCommand cmd = new SqlCommand("INSERT INTO organizador (Nombre, Correo_Electronico, Telefono, RNC, usuario_id) VALUES (@Nombre, @Correo_Electronico, @Telefono, @RNC, @id)", conn);
-            cmd.Parameters.AddWithValue("@Nombre", nombre);
-            cmd.Parameters.AddWithValue("@Correo_Electronico", correo_Electronico);
-            cmd.Parameters.AddWithValue("@Telefono", telefono);
-            cmd.Parameters.AddWithValue("@RNC", RNC);
-            cmd.Parameters.AddWithValue("@id", usuario_id);
-  
+            using (SqlConnection conn = new SqlConnection(sqlServerConnectionString))
+            {
+                await conn.OpenAsync();
+                SqlCommand cmd = new SqlCommand("SELECT organizador_id FROM organizador WHERE RNC = @RNC", conn);
+                cmd.Parameters.AddWithValue("@RNC", RNC);
 
-            await cmd.ExecuteNonQueryAsync();
+                using (SqlDataReader reader = await cmd.ExecuteReaderAsync())
+                {
+                    if (reader.Read())
+                    {
+                        return (reader.GetInt32(0), true);
+                    }
+                }
+            }
+            return (-1, false);
         }
-    }
 
-    //*Metodo para Registrar un nuevo Evento en la base de datos
-    public async Task OnRegisterEventoClicked(string nombre, string fecha, string HoraInicio, string HoraFin, string Ubicacion, int usuario_id, int organizador_id)
-    {
-        using (SqlConnection conn = new SqlConnection(sqlServerConnectionString))
+        //*Metodo para Registrar un nuevo Organizador en la base de datos
+        public async Task OnRegisterOrganizadorClicked(string nombre, string correo_Electronico, string telefono, string RNC, int usuario_id)
         {
-            await conn.OpenAsync();
-            SqlCommand cmd = new SqlCommand("INSERT INTO evento (Nombre, fecha, HoraInicio, HoraFin, Ubicacion, usuario_id, organizador_id) VALUES (@Nombre, @fecha, @HoraInicio, @HoraFin, @Ubicacion, @usuario_id, @organizador_id)", conn);
-            cmd.Parameters.AddWithValue("@Nombre", nombre);
-            cmd.Parameters.AddWithValue("@fecha", fecha);
-            cmd.Parameters.AddWithValue("@HoraInicio", HoraInicio);
-            cmd.Parameters.AddWithValue("@HoraFin", HoraFin);
-            cmd.Parameters.AddWithValue("@Ubicacion", Ubicacion);
-            cmd.Parameters.AddWithValue("@usuario_id", usuario_id);
-            cmd.Parameters.AddWithValue("@organizador_id", organizador_id);
-  
+            using (SqlConnection conn = new SqlConnection(sqlServerConnectionString))
+            {
+                await conn.OpenAsync();
+                SqlCommand cmd = new SqlCommand("INSERT INTO organizador (Nombre, Correo_Electronico, Telefono, RNC, usuario_id) VALUES (@Nombre, @Correo_Electronico, @Telefono, @RNC, @id)", conn);
+                cmd.Parameters.AddWithValue("@Nombre", nombre);
+                cmd.Parameters.AddWithValue("@Correo_Electronico", correo_Electronico);
+                cmd.Parameters.AddWithValue("@Telefono", telefono);
+                cmd.Parameters.AddWithValue("@RNC", RNC);
+                cmd.Parameters.AddWithValue("@id", usuario_id);
 
-            await cmd.ExecuteNonQueryAsync();
+
+                await cmd.ExecuteNonQueryAsync();
+            }
         }
-    }
 
-    
+        //*Metodo para Registrar un nuevo Evento en la base de datos
+        public async Task OnRegisterEventoClicked(string nombre, string fecha, string HoraInicio, string HoraFin, string Ubicacion, int usuario_id, int organizador_id)
+        {
+            using (SqlConnection conn = new SqlConnection(sqlServerConnectionString))
+            {
+                await conn.OpenAsync();
+                SqlCommand cmd = new SqlCommand("INSERT INTO evento (Nombre, fecha, HoraInicio, HoraFin, Ubicacion, usuario_id, organizador_id) VALUES (@Nombre, @fecha, @HoraInicio, @HoraFin, @Ubicacion, @usuario_id, @organizador_id)", conn);
+                cmd.Parameters.AddWithValue("@Nombre", nombre);
+                cmd.Parameters.AddWithValue("@fecha", fecha);
+                cmd.Parameters.AddWithValue("@HoraInicio", HoraInicio);
+                cmd.Parameters.AddWithValue("@HoraFin", HoraFin);
+                cmd.Parameters.AddWithValue("@Ubicacion", Ubicacion);
+                cmd.Parameters.AddWithValue("@usuario_id", usuario_id);
+                cmd.Parameters.AddWithValue("@organizador_id", organizador_id);
 
-       
+
+                await cmd.ExecuteNonQueryAsync();
+            }
+        }
+
+        //*Metodo para Registrar un nuevo Producto en la base de datos.
+        public async Task OnRegisterProductoClicked(string nombre, string descripcion, decimal Precio, int usuario_id)
+        {
+            using (SqlConnection conn = new SqlConnection(sqlServerConnectionString))
+            {
+                await conn.OpenAsync();
+                SqlCommand cmd = new SqlCommand("INSERT INTO producto (Nombre, descripcion, precio, usuario_id) VALUES (@Nombre, @descripcion, @precio, @usuario_id)", conn);
+                cmd.Parameters.AddWithValue("@Nombre", nombre);
+                cmd.Parameters.AddWithValue("@descripcion", descripcion);
+                cmd.Parameters.AddWithValue("@Precio", Precio);
+                cmd.Parameters.AddWithValue("@usuario_id", usuario_id);
+
+
+
+                await cmd.ExecuteNonQueryAsync();
+            }
+        }
+
+        // //*metodo para Editar un dato de la base de datos
+
+        // public async Task OnEditClicked( string namepage, string nombre, string descripcion, decimal Precio, int usuario_id)
+        // {
+
+
+        //     using (SqlConnection conn = new SqlConnection(sqlServerConnectionString))
+        //     {
+        //         await conn.OpenAsync();
+                 
+        //         SqlCommand cmd = new SqlCommand("UPDATE Producto SET Nombre = @Nombre, descripcion = @descripcion, precio = @precio, usuario_id = @usuario_id", conn);
+        //         cmd.Parameters.AddWithValue("@Nombre", nombre);
+        //         cmd.Parameters.AddWithValue("@descripcion", descripcion);
+        //         cmd.Parameters.AddWithValue("@Precio", Precio);
+        //         cmd.Parameters.AddWithValue("@usuario_id", usuario_id);
+
+
+
+        //         await cmd.ExecuteNonQueryAsync();
+        //     }
+
+            
+            
+        // }
+
+
 
         // CRUD para Organizador
         public Task<List<Organizador>> GetOrganizadoresAsync(int usuario_id)
@@ -411,7 +454,7 @@ namespace TapPay.Services
         }
 
         // CRUD para Producto
-        public Task<List<Producto>> GetProductosAsync()
+        public Task<List<Producto>> GetProductosAsync(int usuario_id)
         {
             return _database.Table<Producto>().ToListAsync();
         }
@@ -481,7 +524,7 @@ namespace TapPay.Services
         // Obtener todos los clientes
         public Task<List<Cliente>> GetClientesAsync(int usuario_id)
         {
-             return _database.Table<Cliente>().Where(c => c.usuario_id == usuario_id).ToListAsync();
+            return _database.Table<Cliente>().Where(c => c.usuario_id == usuario_id).ToListAsync();
         }
 
         // Obtener un cliente por ID

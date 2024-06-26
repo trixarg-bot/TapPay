@@ -7,6 +7,7 @@
         <StackLayout Padding="10" Spacing="10">
         <Button Text="Organizadores" Clicked="OnOrganizadorClicked"/>
         <Button Text="Eventos" Clicked="OnEventoClicked"/>
+        <Button Text="Productos" Clicked="OnProductoClicked"/>
         <ActivityIndicator x:Name="LoadingIndicator" IsRunning="False" IsVisible="False" />
         </StackLayout>
     </ScrollView>

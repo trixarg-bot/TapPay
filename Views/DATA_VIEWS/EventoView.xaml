@@ -94,7 +94,7 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
             <!-- AQUI TERMINA EL CODIGO PARA LOS DATOS DE EVENTOS -->        
-
+            <ActivityIndicator x:Name='LoadingIndicator' IsRunning='False' IsVisible='False' />
            
         </StackLayout>
     </ScrollView>

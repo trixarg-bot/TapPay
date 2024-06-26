@@ -41,8 +41,8 @@ namespace TapPay.Views
          //*BOTON PARA VIAJAR HACIA LA PAGINA PARA AGREGAR UN EVENTO
          private async void OnAgregarOrganizadorClicked(object sender, EventArgs e)
         {
-        
-             await Navigation.PushAsync(new ADD_Organizador(usuario_id));
+            ADD_Organizador add_organizador = new ADD_Organizador(usuario_id);
+            await NavigationHelper.NavigateWithLoadingIndicatorAsync(this, add_organizador, LoadingIndicator);
         }
 
        

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TapPay.Views.ProductoView"
+             Title="Productos">
+    <ScrollView>
+        <StackLayout Padding="10">
+            <Grid>
+                <Button Text="Eliminar"
+                        MaximumWidthRequest="100"
+                        HorizontalOptions="Start"/>
+                <Button Text="Editar"
+                        MaximumWidthRequest="100"
+                        HorizontalOptions="Center"/>
+                <Button Text="Agregar"
+                        MaximumWidthRequest="100"
+                        HorizontalOptions="End"
+                        Clicked="OnAgregarProductoClicked"/>
+            </Grid>
+
+
+            <!-- AQUI COMIENZA EL CODIGO PARA LOS DATOS DE PRODUCTOS -->
+            <CollectionView x:Name="ProductosCollectionView"
+                    HorizontalOptions="Start">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BorderColor="LightGray"
+                               CornerRadius="5"
+                               Padding="5"
+                               Margin="13"
+                               BackgroundColor="Black"
+                               VerticalOptions="CenterAndExpand"
+                               HorizontalOptions="StartAndExpand"
+                               WidthRequest="350">
+                            <StackLayout Padding="0,10">
+                                <!-- label para el Nombre del Producto -->
+                                <Label>
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Nombre: "
+                                                  FontAttributes="Bold"/>
+                                            <Span Text="{Binding Nombre}"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <BoxView Color="Gray"
+                                         HeightRequest="2"
+                                         HorizontalOptions="Fill"/>
+                                <!-- label para La Descripcion del Producto -->
+                                <Label>
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Descripcion: "
+                                                  FontAttributes="Bold"/>
+                                            <Span Text="{Binding Descripcion}"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <!-- label para el Precio del Producto -->
+                                <Label>
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Precio: "
+                                                  FontAttributes="Bold"/>
+                                            <Span Text="{Binding Precio}"/>
+                                            <Span Text="$ pesos Dominicanos"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <!-- AQUI TERMINA EL CODIGO PARA LOS DATOS DE Productos -->
+            <ActivityIndicator x:Name='LoadingIndicator' IsRunning='False' IsVisible='False'/>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

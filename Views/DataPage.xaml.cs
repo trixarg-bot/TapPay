@@ -24,12 +24,18 @@ namespace TapPay.Views
 
         }
 
-
+        
+        //*Boton para viaje hacia la pagian de Organizadores
         private async void OnOrganizadorClicked(object sender, EventArgs e)
         {
 
-            await Navigation.PushAsync(new OrganizadorView(usuario_id));
+           LoadingIndicator.IsRunning = true;
+            LoadingIndicator.IsVisible = true;
+            OrganizadorView organizadorView = new OrganizadorView(usuario_id);
+            await NavigationHelper.NavigateWithLoadingIndicatorAsync(this, organizadorView, LoadingIndicator);
         }
+       
+       //*Boton para viaje hacia la pagian de eventos
         private async void OnEventoClicked(object sender, EventArgs e)
         {
             LoadingIndicator.IsRunning = true;
@@ -37,6 +43,17 @@ namespace TapPay.Views
             EventoView eventoView = new EventoView(usuario_id);
             await NavigationHelper.NavigateWithLoadingIndicatorAsync(this, eventoView, LoadingIndicator);
         }
+
+        //*Boton para viaje hacia la pagina de Productos
+         private async void OnProductoClicked(object sender, EventArgs e)
+        {
+            LoadingIndicator.IsRunning = true;
+            LoadingIndicator.IsVisible = true;
+            ProductoView productoView = new ProductoView(usuario_id);
+            await NavigationHelper.NavigateWithLoadingIndicatorAsync(this, productoView, LoadingIndicator);
+        }
+
+
 
         // private async void LoadData()
         // {

@@ -28,6 +28,12 @@ build_metadata.AdditionalFiles.ManifestResourceName = TapPay.AppShell.xaml
 build_metadata.AdditionalFiles.TargetPath = AppShell.xaml
 build_metadata.AdditionalFiles.RelativePath = AppShell.xaml
 
+[C:/Users/liria/OneDrive/Escritorio/Eduardo/maui_APP/TapPay/Helpers/NavigationHelper.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = TapPay.Helpers.NavigationHelper.xaml
+build_metadata.AdditionalFiles.TargetPath = Helpers\NavigationHelper.xaml
+build_metadata.AdditionalFiles.RelativePath = Helpers\NavigationHelper.xaml
+
 [C:/Users/liria/OneDrive/Escritorio/Eduardo/maui_APP/TapPay/Resources/Styles/Colors.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = TapPay.Resources.Styles.Colors.xaml
@@ -52,11 +58,11 @@ build_metadata.AdditionalFiles.ManifestResourceName = TapPay.Views.ALL_Register_
 build_metadata.AdditionalFiles.TargetPath = Views\ALL_Register_Pages\ADD_Organizador.xaml
 build_metadata.AdditionalFiles.RelativePath = Views\ALL_Register_Pages\ADD_Organizador.xaml
 
-[C:/Users/liria/OneDrive/Escritorio/Eduardo/maui_APP/TapPay/Views/ALL_Register_Pages/RegisterPage.xaml]
+[C:/Users/liria/OneDrive/Escritorio/Eduardo/maui_APP/TapPay/Views/ALL_Register_Pages/ADD_Producto.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
-build_metadata.AdditionalFiles.ManifestResourceName = TapPay.Views.ALL_Register_Pages.RegisterPage.xaml
-build_metadata.AdditionalFiles.TargetPath = Views\ALL_Register_Pages\RegisterPage.xaml
-build_metadata.AdditionalFiles.RelativePath = Views\ALL_Register_Pages\RegisterPage.xaml
+build_metadata.AdditionalFiles.ManifestResourceName = TapPay.Views.ALL_Register_Pages.ADD_Producto.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\ALL_Register_Pages\ADD_Producto.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\ALL_Register_Pages\ADD_Producto.xaml
 
 [C:/Users/liria/OneDrive/Escritorio/Eduardo/maui_APP/TapPay/Views/DataPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
@@ -76,6 +82,12 @@ build_metadata.AdditionalFiles.ManifestResourceName = TapPay.Views.DATA_VIEWS.Or
 build_metadata.AdditionalFiles.TargetPath = Views\DATA_VIEWS\OrganizadorView.xaml
 build_metadata.AdditionalFiles.RelativePath = Views\DATA_VIEWS\OrganizadorView.xaml
 
+[C:/Users/liria/OneDrive/Escritorio/Eduardo/maui_APP/TapPay/Views/DATA_VIEWS/ProductoView.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = TapPay.Views.DATA_VIEWS.ProductoView.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\DATA_VIEWS\ProductoView.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\DATA_VIEWS\ProductoView.xaml
+
 [C:/Users/liria/OneDrive/Escritorio/Eduardo/maui_APP/TapPay/Views/LoginPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = TapPay.Views.LoginPage.xaml
@@ -87,12 +99,6 @@ build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = TapPay.Views.MainPage.xaml
 build_metadata.AdditionalFiles.TargetPath = Views\MainPage.xaml
 build_metadata.AdditionalFiles.RelativePath = Views\MainPage.xaml
-
-[C:/Users/liria/OneDrive/Escritorio/Eduardo/maui_APP/TapPay/Views/NavigationHelper.xaml]
-build_metadata.AdditionalFiles.GenKind = Xaml
-build_metadata.AdditionalFiles.ManifestResourceName = TapPay.Views.NavigationHelper.xaml
-build_metadata.AdditionalFiles.TargetPath = Views\NavigationHelper.xaml
-build_metadata.AdditionalFiles.RelativePath = Views\NavigationHelper.xaml
 
 [C:/Users/liria/OneDrive/Escritorio/Eduardo/maui_APP/TapPay/Views/NFCReaderPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml

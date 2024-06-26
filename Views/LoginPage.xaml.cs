@@ -6,13 +6,19 @@ using Microsoft.Maui.Controls;
 using TapPay.Services;
 
 
+
+
 namespace TapPay.Views
 {
     public partial class LoginPage : ContentPage
     {
         private string connectionString = "Server=192.168.68.114,1433;Database=TapPay;User Id=sa;Password=5a$Rv9&d2!Fm;TrustServerCertificate=True";
         private DatabaseService databaseService;
-        private NavigationHelper navigationHelper = new NavigationHelper();
+
+        
+
+        
+
 
         public LoginPage()
         {
@@ -21,7 +27,17 @@ namespace TapPay.Views
             string sqlServerConnectionString = "Server=192.168.68.114,1433;Database=TapPay;User Id=sa;Password=5a$Rv9&d2!Fm;TrustServerCertificate=True";
             databaseService = new DatabaseService(dbPath, sqlServerConnectionString);
         }
-
+//* <summary>
+//* This C# function handles the login process by validating user credentials, obtaining the user ID,
+//* and navigating to the main data page if the login is successful.
+//* </summary>
+//* <param name="sender">The `sender` parameter in the `OnLoginClicked` method refers to the object that
+//* raised the event. In this case, it would be the UI element (like a button) that was clicked to
+//* trigger the login action.</param>
+//* <param name="EventArgs">The `EventArgs` parameter in the `OnLoginClicked` method is an object that
+//* contains event data specific to the event that was raised. In this context, it represents the event
+// *arguments for the event that triggered the login button click. Event arguments provide additional
+//* information about the event that occurred.</param>
         private async void OnLoginClicked(object sender, EventArgs e)
         {
             string correo_electronico = EmailEntry.Text;
@@ -38,7 +54,7 @@ namespace TapPay.Views
                     await App.SyncDatabaseAsync(id);
                     //* Si el login es exitoso, navega a la página principal pasando el usuario_id
                     DataPage dataPage = new DataPage(id);
-                    await NavigationHelper.NavigateWithLoadingIndicatorAsync(this, dataPage, LoadingIndicator); ;
+                    await NavigationHelper.NavigateWithLoadingIndicatorAsync(this, dataPage, LoadingIndicator); 
                     // await Navigation.PushAsync(new DataPage(id));
                 }
                 else
