@@ -227,6 +227,7 @@ namespace TapPay.Services
             return (-1, false);
         }
 
+
         //*Metodo para obtener el Id del organizador A traves del RNC 
         public async Task<(int id, bool existe)> ObtenerIdOrganizadorAsync(string RNC)
         {
@@ -247,6 +248,7 @@ namespace TapPay.Services
             return (-1, false);
         }
 
+
         //*Metodo para Registrar un nuevo Organizador en la base de datos
         public async Task OnRegisterOrganizadorClicked(string nombre, string correo_Electronico, string telefono, string RNC, int usuario_id)
         {
@@ -264,6 +266,7 @@ namespace TapPay.Services
                 await cmd.ExecuteNonQueryAsync();
             }
         }
+
 
         //*Metodo para Registrar un nuevo Evento en la base de datos
         public async Task OnRegisterEventoClicked(string nombre, string fecha, string HoraInicio, string HoraFin, string Ubicacion, int usuario_id, int organizador_id)
@@ -285,6 +288,7 @@ namespace TapPay.Services
             }
         }
 
+
         //*Metodo para Registrar un nuevo Producto en la base de datos.
         public async Task OnRegisterProductoClicked(string nombre, string descripcion, decimal Precio, int usuario_id)
         {
@@ -303,33 +307,69 @@ namespace TapPay.Services
             }
         }
 
-        // //*metodo para Editar un dato de la base de datos
 
-        // public async Task OnEditClicked( string namepage, string nombre, string descripcion, decimal Precio, int usuario_id)
-        // {
+        //*metodo para Eliminar un dato de la tabla producto
+        public async Task OnDeleteInvoked(int productoId)
+        {
+            using (SqlConnection conn = new SqlConnection(sqlServerConnectionString))
+            {
+                await conn.OpenAsync();
+                SqlCommand cmd = new SqlCommand("DELETE FROM Producto WHERE producto_id = @ProductoId", conn);
+                cmd.Parameters.AddWithValue("@ProductoId", productoId);
+
+                await cmd.ExecuteNonQueryAsync();
+            }
+        }
+
+        
+        //*METODO PARA ELIMINAR UN DATO DE LA TABLA ORGANIZADOR.
+        public async Task OnDeleteOrganizadorInvoked(int organizador_id)
+        {
+            using (SqlConnection conn = new SqlConnection(sqlServerConnectionString))
+            {
+                await conn.OpenAsync();
+                SqlCommand cmd = new SqlCommand("DELETE FROM Organizador WHERE organizador_id = @organizador_id", conn);
+                cmd.Parameters.AddWithValue("@organizador_id", organizador_id);
+
+                await cmd.ExecuteNonQueryAsync();
+            }
+        }
+
+        
+        //*METODO PARA EDITAR UN PRODUCTO
+        public async Task OnEditClicked(int productoId, string nombre, string descripcion, decimal Precio)
+        {
+            using (SqlConnection conn = new SqlConnection(sqlServerConnectionString))
+            {
+                await conn.OpenAsync();
+                SqlCommand cmd = new SqlCommand("UPDATE Producto SET Nombre = @Nombre, descripcion = @descripcion, precio = @precio WHERE producto_id = @ProductoId", conn);
+                cmd.Parameters.AddWithValue("@ProductoId", productoId);
+                cmd.Parameters.AddWithValue("@Nombre", nombre);
+                cmd.Parameters.AddWithValue("@descripcion", descripcion);
+                cmd.Parameters.AddWithValue("@Precio", Precio);
+
+                await cmd.ExecuteNonQueryAsync();
+            }
+        }
 
 
-        //     using (SqlConnection conn = new SqlConnection(sqlServerConnectionString))
-        //     {
-        //         await conn.OpenAsync();
-                 
-        //         SqlCommand cmd = new SqlCommand("UPDATE Producto SET Nombre = @Nombre, descripcion = @descripcion, precio = @precio, usuario_id = @usuario_id", conn);
-        //         cmd.Parameters.AddWithValue("@Nombre", nombre);
-        //         cmd.Parameters.AddWithValue("@descripcion", descripcion);
-        //         cmd.Parameters.AddWithValue("@Precio", Precio);
-        //         cmd.Parameters.AddWithValue("@usuario_id", usuario_id);
+        //*METODO PARA EDITAR UN ORGANIZADOR
+        public async Task OnEditOrganizadorClicked(int organizadorid, string nombre, string correo_electronico, string Rnc)
+        {
+            using (SqlConnection conn = new SqlConnection(sqlServerConnectionString))
+            {
+                await conn.OpenAsync();
+                SqlCommand cmd = new SqlCommand("UPDATE Organizador SET Nombre = @Nombre, correo_electronico = @correo_electronico, RNC = @Rnc WHERE organizador_id = @organizadorid", conn);
+                cmd.Parameters.AddWithValue("@organizadorid", organizadorid);
+                cmd.Parameters.AddWithValue("@Nombre", nombre);
+                cmd.Parameters.AddWithValue("@correo_electronico", correo_electronico);
+                cmd.Parameters.AddWithValue("@RNC", Rnc);
 
-
-
-        //         await cmd.ExecuteNonQueryAsync();
-        //     }
-
-            
-            
-        // }
-
-
-
+                await cmd.ExecuteNonQueryAsync();
+            }
+        }
+        
+        
         // CRUD para Organizador
         public Task<List<Organizador>> GetOrganizadoresAsync(int usuario_id)
         {

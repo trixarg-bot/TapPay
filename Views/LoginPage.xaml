@@ -4,7 +4,7 @@
              x:Class="TapPay.Views.LoginPage"
              Title="Login">
     <StackLayout Padding="30" Spacing="30">
-        <Entry Text="carlos.gomez@example.com" Placeholder="Correo Electrónico" x:Name="EmailEntry" />
+        <Entry Text="Lirianobaeze@gmail.com" Placeholder="Correo Electrónico" x:Name="EmailEntry" />
         
         <Grid ColumnSpacing="10">
             <Grid.ColumnDefinitions>
@@ -13,7 +13,7 @@
             </Grid.ColumnDefinitions>
             
             <Entry Grid.Column="0"
-                   Text="password123"
+                   Text="Hkklaqkx_2505"
                    Placeholder="Contraseña"
                    IsPassword="True"
                    x:Name="PasswordEntry" />

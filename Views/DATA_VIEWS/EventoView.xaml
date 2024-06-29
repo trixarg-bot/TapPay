@@ -5,16 +5,20 @@
              Title="Eventos">
     <ScrollView>
         <StackLayout Padding="10">
-        <Grid>
-        <Button Text="Eliminar" MaximumWidthRequest="100" HorizontalOptions="Start"/>
-        <Button Text="Editar" MaximumWidthRequest="100" HorizontalOptions="Center"/>
-        <Button Text="Agregar" MaximumWidthRequest="100" HorizontalOptions="End" Clicked="OnAgregarEventoClicked"/>
-        </Grid>
-         <!-- AQUI COMIENZA EL CODIGO PARA LOS DATOS DE EVENTOS -->
+            <Grid>
+                <Button 
+                        ImageSource="plus.png"
+                        CornerRadius="50"
+                        Padding="1"
+                        MaximumWidthRequest="100"
+                        HorizontalOptions="End"
+                        Clicked="OnAgregarEventoClicked"/>
+            </Grid>
+            <!-- AQUI COMIENZA EL CODIGO PARA LOS DATOS DE EVENTOS -->
             <Label Text="Eventos"
-                    FontAttributes="Bold"
-                    FontSize="Medium"
-                    Margin="0,20,0,0"/>
+                   FontAttributes="Bold"
+                   FontSize="Medium"
+                   Margin="0,20,0,0"/>
             <CollectionView x:Name="EventosCollectionView">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
@@ -24,7 +28,7 @@
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="ID: "
-                                                FontAttributes="Bold"/>
+                                              FontAttributes="Bold"/>
                                         <Span Text="{Binding EventoId}"/>
                                     </FormattedString>
                                 </Label.FormattedText>
@@ -34,7 +38,7 @@
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="Nombre: "
-                                                FontAttributes="Bold"/>
+                                              FontAttributes="Bold"/>
                                         <Span Text="{Binding Nombre}"/>
                                     </FormattedString>
                                 </Label.FormattedText>
@@ -44,7 +48,7 @@
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="Fecha: "
-                                                FontAttributes="Bold"/>
+                                              FontAttributes="Bold"/>
                                         <Span Text="{Binding Fecha}"/>
                                     </FormattedString>
                                 </Label.FormattedText>
@@ -54,7 +58,7 @@
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="Hora Inicio: "
-                                                FontAttributes="Bold"/>
+                                              FontAttributes="Bold"/>
                                         <Span Text="{Binding HoraInicio}"/>
                                     </FormattedString>
                                 </Label.FormattedText>
@@ -64,7 +68,7 @@
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="Hora Fin: "
-                                                FontAttributes="Bold"/>
+                                              FontAttributes="Bold"/>
                                         <Span Text="{Binding HoraFin}"/>
                                     </FormattedString>
                                 </Label.FormattedText>
@@ -74,7 +78,7 @@
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="Ubicacion: "
-                                                FontAttributes="Bold"/>
+                                              FontAttributes="Bold"/>
                                         <Span Text="{Binding Ubicacion}"/>
                                     </FormattedString>
                                 </Label.FormattedText>
@@ -84,7 +88,7 @@
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="Organizador: "
-                                                FontAttributes="Bold"/>
+                                              FontAttributes="Bold"/>
                                         <Span Text="{Binding OrganizadorId}"/>
                                     </FormattedString>
                                 </Label.FormattedText>
@@ -93,9 +97,14 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-            <!-- AQUI TERMINA EL CODIGO PARA LOS DATOS DE EVENTOS -->        
-            <ActivityIndicator x:Name='LoadingIndicator' IsRunning='False' IsVisible='False' />
-           
+            <!-- AQUI TERMINA EL CODIGO PARA LOS DATOS DE EVENTOS -->
+            <ActivityIndicator x:Name='LoadingIndicator'
+                               IsRunning='False'
+                               IsVisible='False'/>
+            <Button Text="Editar"
+                    MaximumWidthRequest="100"
+                    HorizontalOptions="Center"/>
+
         </StackLayout>
     </ScrollView>
 </ContentPage>

@@ -20,6 +20,9 @@
 
             <Button Text="Registrar Producto"
                     Clicked="OnProductoRegisterClicked"/>       
+             
+             <Button Text="Editar Producto"
+                    Clicked="OnEditRegisterClicked"/>         
 
         </StackLayout>
     </ScrollView>

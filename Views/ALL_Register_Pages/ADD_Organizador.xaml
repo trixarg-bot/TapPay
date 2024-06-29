@@ -11,6 +11,7 @@
         <Entry Placeholder="Ingrese el RNC de la Empresa organizador" x:Name="RncEntry" />
         
         <Button Text="Registrar Organizador" Clicked="OnOrganizadorRegisterClicked" />
+        <Button Text="Editar Organizador" Clicked="OnEditRegisterClicked" />
 
     </StackLayout>
 </ContentPage>
